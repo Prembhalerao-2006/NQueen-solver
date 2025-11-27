@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>N-Queens Solver</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="board.css" />
+</head>
+<body>
+    <div id="winMessage" class="win-popup">
+  🎉 Congratulations! You solved the puzzle and win! 🎉
+</div>
+
+  <div class="container">
+
+    <h1>N-Queens Solver</h1>
+
+    <div class="controls">
+      <label for="nRange">N: <span id="nValue">8</span></label>
+      <input id="nRange" type="range" min="4" max="14" value="4" />
+      <button id="lockBtn">Lock N</button>
+      <button id="stepBtn">Step</button>
+      <button id="solveBtn">Solve & Animate</button>
+      <button id="stopBtn" disabled>Stop</button>
+      <button id="resetBtn">Reset</button>
+      <button id="themeBtn" class="theme-toggle">🌙</button>
+
+    </div>
+
+    <div id="boardWrap">   
+    
+      <div id="board"></div>
+    </div>
+
+    <div class="info">
+      <p id="status">Status: ready</p>
+    </div>
+
+  </div>
+
+
+  <script src="solver.js"></script>
+</body>
+</html>

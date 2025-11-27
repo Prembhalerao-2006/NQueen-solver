@@ -1,0 +1,261 @@
+/* ------------------------------
+   THEME DEFAULT (LIGHT MODE)
+--------------------------------*/
+:root {
+  --bg: #f3f4f6;
+  --text: #111827;
+  --panel: #ffffff;
+
+  --cell-light: #e5e7eb;
+  --cell-dark: #9ca3af;
+
+  --queen-color: linear-gradient(180deg, #f97316, #fb923c);
+
+  --danger: #ef4444;
+  --accent: #0ea5a9;
+}
+
+/* ------------------------------
+   DARK MODE OVERRIDES
+--------------------------------*/
+.dark-mode {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --panel: rgba(255, 255, 255, 0.05);
+
+  --cell-light: #f1f5f9;
+  --cell-dark: #475569;
+
+  --queen-color: linear-gradient(180deg, #fb923c, #f97316);
+  
+  --danger: #ff4d4d;
+  --accent: #6ee7b7;
+}
+
+/* Apply variables */
+body {
+  margin: 0;
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;    /* center left-right */
+  align-items: center;        /* center up-down */
+
+  min-height: 100vh;          /* full screen height */
+
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s, color 0.25s;
+}
+
+
+/* Board cells update theme */
+.cell.light {
+  background: var(--cell-light);
+  color: var(--bg);
+}
+
+.cell.dark {
+  background: var(--cell-dark);
+  color: var(--bg);
+}
+
+/* Queens use theme */
+.cell.q {
+  background: var(--queen-color);
+  color: white;
+}
+
+/* Danger stays red */
+.cell.queen-danger,
+.cell.danger-line {
+  background: var(--danger) !important;
+  color: white !important;
+}
+
+/* Win popup respects theme */
+.win-popup {
+  background: var(--accent);
+}
+
+/* ------------------------------
+   THEME BUTTON
+--------------------------------*/
+.theme-toggle {
+  background: var(--accent);
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Layout container */
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 10px;
+}
+
+/* Title */
+h1 {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  color: var(--accent);
+  text-align: center;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.controls input[type="range"] {
+  width: 170px;
+}
+
+.controls button {
+  background: linear-gradient(180deg,#0ea5a9,#057d79);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Board Wrapper (responsive) */
+#boardWrap {
+  background: var(--panel);
+  padding: 8px 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 12px;
+  margin-right: 5px;
+}
+
+/* BOARD — RESPONSIVE SQUARE GRID */
+#board {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  max-width: 500px;   /* max size on desktop */
+  aspect-ratio: 1;    /* keep square board */
+}
+
+/* Cell Style */
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: clamp(14px, 3vw, 22px); /* responsive font size */
+  font-weight: 700;
+  border-radius: 6px;
+
+  user-select: none;
+  transition: 0.1s;
+}
+
+.light { background: var(--cell-light); color: #0f172a; }
+.dark  { background: var(--cell-dark); color: #0f172a; }
+
+/* QUEEN ORANGE */
+.cell.q {
+  background: var(--queen-color);
+  color: white;
+  transform: scale(1.03);
+}
+
+/* UNSAFE queen */
+.cell.queen-danger {
+  background: var(--danger) !important;
+  color: white !important;
+}
+
+/* UNSAFE line */
+.cell.danger-line {
+  background: var(--danger) !important;
+  color: white !important;
+}
+
+/* Info text */
+.info {
+  margin-top: 10px;
+  color: var(--muted, #6b7280);
+  text-align: center;
+}
+
+/* Win popup */
+.win-popup {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px 30px;
+  background: #10b981;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 9999;
+}
+
+/* ---------- RESPONSIVE BREAKPOINTS ---------- */
+
+/* Tablets */
+@media (max-width: 768px) {
+  #board {
+    max-width: 420px;
+  }
+  .controls {
+    justify-content: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  #board {
+    max-width: 340px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .controls button,
+  .controls input[type="range"] {
+    width: 100%;
+  }
+}
+
+.dark-mode {
+  --bg: #0f172a;
+  --panel: rgba(255,255,255,0.05);
+  --light: #f1f5f9;
+  --dark: #94a3b8;
+
+  --queen: linear-gradient(180deg,#f97316,#fb923c);
+  --danger: #ff4d4d;
+  --muted: #94a3b8;
+  --accent: #6ee7b7;
+}
